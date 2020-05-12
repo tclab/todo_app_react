@@ -9,6 +9,7 @@ import ErrorComponent from './components/ErrorComponent'
 import HeaderComponent from './components/HeaderComponent'
 import FooterComponent from './components/FooterComponent'
 import AuthenticatedRoute from './components/AuthenticatedRoute'
+import TodoComponent from './components/TodoComponent'
 
 
 class TodoApp extends Component{
@@ -21,6 +22,7 @@ class TodoApp extends Component{
                         <Route path="/" exact component={LoginComponent}/>
                         <Route path="/login" component={LoginComponent}/>
                         <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
+                        <AuthenticatedRoute path="/todos/:id" component={TodoComponent}/>
                         <AuthenticatedRoute path="/todos" component={ListTodosComponent}/>
                         <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                         <Route component={ErrorComponent}/>
@@ -42,6 +44,7 @@ class TodoApp extends Component{
     
     Instead conditional rendering is going to be used
 */
+/*
 function ShowLoginMessage (props) {
     if(props.loginFail){
         return <div>Invalid Credentials</div>
@@ -51,5 +54,6 @@ function ShowLoginMessage (props) {
         return <div></div>
     }
 }
+*/
 
 export default TodoApp
