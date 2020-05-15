@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-//import React from 'react';
-//import logo from './logo.svg';
 
 //import Counter from './components/counter_example/counter/Counter'
 import TodoApp from './components/todo/TodoApp'
