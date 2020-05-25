@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {API_URL} from '../../Constants'
+import {HEROKU_API_URL} from '../../Constants'
 
 export const USERNAME_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
@@ -15,7 +15,7 @@ class AuthenticationService {
 
 
     callBasicAuthenticationService(username, password){
-        return axios.get(`${API_URL}/basicauth`,
+        return axios.get(`${HEROKU_API_URL}/basicauth`,
         {
             headers: {
                 authorization: this.getBasicAuthToken(username, password)
@@ -24,7 +24,7 @@ class AuthenticationService {
     }
 
     callJWTAuthenticationService(username, password){
-        return axios.post(`${API_URL}/authenticate`,
+        return axios.post(`${HEROKU_API_URL}/authenticate`,
         {
             username,
             password

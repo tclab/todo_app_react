@@ -1,9 +1,10 @@
 import axios from 'axios'
+import {HEROKU_API_URL} from '../../Constants'
 
 class HelloWorldService {
 
     executeHelloWorldService(){
-        return axios.get('http://localhost:8080/hello-world-bean')
+        return axios.get(`${HEROKU_API_URL}/hello-world-bean`)
     }
 
     executeHelloWorldPathService(name){
@@ -13,7 +14,7 @@ class HelloWorldService {
         // // we encode the user name and password with base64 using window.btoa
         // let basicAuthHeather = 'Basic ' + window.btoa(username + ":" + password);
 
-        return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`
+        return axios.get(`${HEROKU_API_URL}/hello-world/path-variable/${name}`
         // ,
         //     {
         //         headers: {
