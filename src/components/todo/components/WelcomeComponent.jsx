@@ -28,13 +28,13 @@ class WelcomeComponent extends Component{
                     You can manage your todo list <Link to="/todos">here</Link>. 
                 </div>
 
-                {/* <div className="container">   
+                <div className="container">   
                     <button className="btn btn-success" onClick={this.getWelcomeMessage}>Todo list</button>
-                </div> */}
+                </div>
 
-                {/* <div className="container">   
+                <div className="container">   
                     <h1>{this.state.servicemessage}</h1>
-                </div> */}
+                </div>
 
             </>
 
@@ -52,7 +52,13 @@ class WelcomeComponent extends Component{
     }
 
     handleErrorResponse(error){
-        this.setState({servicemessage: error.response.data.message})
+
+        console.log(error.response)
+
+        let errorMessage = '';
+        if(error.message) errorMessage += error.message
+        if(error.response && error.response.data) errorMessage += error.response.data.message;
+        this.setState({servicemessage: errorMessage})
 
     }
 }

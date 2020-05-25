@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TodoDataService from '../../../api/todo/TodoDataService'
 import AuthenticationService from '../../../api/todo/AuthenticationService'
+import moment from 'moment'
 
 class ListTodosComponent extends Component{
     constructor(props){
@@ -12,6 +13,7 @@ class ListTodosComponent extends Component{
 
         this.handleUpdateBtn = this.handleUpdateBtn.bind(this)
         this.handleDeleteBtn = this.handleDeleteBtn.bind(this)
+        this.handleAddBtn = this.handleAddBtn.bind(this)
         this.refreshTodos = this.refreshTodos.bind(this)
     }
 
@@ -51,17 +53,11 @@ class ListTodosComponent extends Component{
     handleUpdateBtn(id){
         console.log(`Update id: ${id}`)
         this.props.history.push(`/todos/${id}`)
+    }
 
-        // let username = AuthenticationService.getLoggedInUser()
-        // TodoDataService.deleteTodo(username, id)
-        // .then(
-        //     response => {
-        //         this.setState({
-        //             message: 'Todo deleted successfully!'
-        //         })
-        //         this.refreshTodos()
-        //     }
-        // )
+    handleAddBtn(){
+        console.log(`Create`)
+        this.props.history.push('/todos/-1')
     }
 
     refreshTodos(){
@@ -69,7 +65,6 @@ class ListTodosComponent extends Component{
         TodoDataService.retrieveAllTodos(username)
         .then(
                 response => {
-                    // console.log(response)
                     this.setState({todos: response.data})
             }
             )
@@ -100,7 +95,7 @@ class ListTodosComponent extends Component{
                                     <tr key = {todo.id}>
                                         <th>{todo.description}</th>
                                         <th>{todo.done.toString()}</th>
-                                        <th>{todo.targetDate.toString()}</th>
+                                        <th>{moment(todo.targetDate.toString()).format('YYYY-MM-DD')}</th>
                                         <th><button className="btn btn-success" onClick={() => this.handleUpdateBtn(todo.id)}>Update </button></th>
                                         <th><button className="btn btn-warning" onClick={() => this.handleDeleteBtn(todo.id)}>Delete</button></th>
                                     </tr>
@@ -108,6 +103,9 @@ class ListTodosComponent extends Component{
                             }
                         </tbody>
                     </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={() => this.handleAddBtn()} >Add</button>
+                    </div>
                 </div>
             </div>
         )
