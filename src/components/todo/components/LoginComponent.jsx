@@ -62,15 +62,24 @@ class LoginComponent extends Component{
 
     onClickLoginHandler (event){
         // juan, admin
-        if(this.state.username==='juan' && this.state.password==='admin'){
-            AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password)
-            this.props.history.push(`/welcome/${this.state.username}`)
-            //this.setState({loginSuccess: true})
-            //this.setState({loginFail: false})
-        } else {
+        // if(this.state.username==='juan' && this.state.password==='admin'){
+        //     AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password)
+        //     this.props.history.push(`/welcome/${this.state.username}`)
+        //     //this.setState({loginSuccess: true})
+        //     //this.setState({loginFail: false})
+        // } else {
+        //     this.setState({loginFail: true})
+        //     this.setState({loginSuccess: false})
+        // }
+
+        AuthenticationService.callBasicAuthenticationService(this.state.username, this.state.password)
+        .then( () => {
+                AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password);
+                this.props.history.push(`/welcome/${this.state.username}`);
+        }).catch( () => {
             this.setState({loginFail: true})
             this.setState({loginSuccess: false})
-        }
+        })
     }
 }
 

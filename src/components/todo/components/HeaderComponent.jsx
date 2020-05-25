@@ -12,7 +12,7 @@ class HeaderComponent extends Component{
         return (
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div className="navbar-brand">TCLAB</div>
+                    <div className="navbar-brand">ListManiac</div>
                     <ul className="navbar-nav">
                         {isUserLoggedIn && <li><Link className="nav-link" to="/welcome/juan">Home</Link></li>}
                         {isUserLoggedIn && <li><Link className="nav-link" to="/todos">Todos</Link></li>}

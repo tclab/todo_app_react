@@ -14,7 +14,7 @@ class WelcomeComponent extends Component{
         this.getWelcomeMessage = this.getWelcomeMessage.bind(this)
         this.handleSuccesfullResponse = this.handleSuccesfullResponse.bind(this)
         this.handleErrorResponse = this.handleErrorResponse.bind(this) 
-
+        this.handleTodoListBtn = this.handleTodoListBtn.bind(this)
     }
 
     render(){
@@ -22,16 +22,19 @@ class WelcomeComponent extends Component{
             <>
                 <h1>Welcome!</h1>
                 <div className="container">   
-                    Welcome {this.props.match.params.name} to TODO app!!
-
-                    <br/>
-                    You can manage your todo list <Link to="/todos">here</Link>. 
+                    Welcome <b>{this.props.match.params.name}</b> to <b>Listmaniac</b>
                 </div>
 
+                <div className="container">
+                    <button className="btn btn-success" onClick={() => this.handleTodoListBtn()}>Go to your todo list</button>
+                </div>
+
+
+                
+                {/*Test section*/}
                 <div className="container">   
-                    <button className="btn btn-success" onClick={this.getWelcomeMessage}>Todo list</button>
+                    Test welcome message <Link onClick={() => this.getWelcomeMessage()}>TEST</Link>. 
                 </div>
-
                 <div className="container">   
                     <h1>{this.state.servicemessage}</h1>
                 </div>
@@ -45,6 +48,10 @@ class WelcomeComponent extends Component{
         HelloWorldService.executeHelloWorldPathService(this.props.match.params.name)
         .then(response => this.handleSuccesfullResponse(response))
         .catch(error => this.handleErrorResponse(error))
+    }
+
+    handleTodoListBtn(id){
+        this.props.history.push(`/todos/`)
     }
 
     handleSuccesfullResponse(response) {
