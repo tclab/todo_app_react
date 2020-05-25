@@ -61,7 +61,7 @@ class LoginComponent extends Component{
     }
 
     onClickLoginHandler (event){
-        // juan, admin
+        // In memory uthentication
         // if(this.state.username==='juan' && this.state.password==='admin'){
         //     AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password)
         //     this.props.history.push(`/welcome/${this.state.username}`)
@@ -72,9 +72,20 @@ class LoginComponent extends Component{
         //     this.setState({loginSuccess: false})
         // }
 
-        AuthenticationService.callBasicAuthenticationService(this.state.username, this.state.password)
-        .then( () => {
-                AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password);
+        // Basic authentication
+        // AuthenticationService.callBasicAuthenticationService(this.state.username, this.state.password)
+        // .then( () => {
+        //         AuthenticationService.registerSuccessfullLoging(this.state.username, this.state.password);
+        //         this.props.history.push(`/welcome/${this.state.username}`);
+        // }).catch( () => {
+        //     this.setState({loginFail: true})
+        //     this.setState({loginSuccess: false})
+        // })
+
+        // JWR Authentication
+        AuthenticationService.callJWTAuthenticationService(this.state.username, this.state.password)
+        .then( (response) => {
+                AuthenticationService.registerSuccessfullLogingJWT(this.state.username, response.data.token);
                 this.props.history.push(`/welcome/${this.state.username}`);
         }).catch( () => {
             this.setState({loginFail: true})

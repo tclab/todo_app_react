@@ -64,10 +64,9 @@ class ListTodosComponent extends Component{
         let username = AuthenticationService.getLoggedInUser()
         TodoDataService.retrieveAllTodos(username)
         .then(
-                response => {
-                    this.setState({todos: response.data})
-            }
-            )
+            response => {
+                this.setState({todos: response.data})
+        })
         .catch()
     }
 

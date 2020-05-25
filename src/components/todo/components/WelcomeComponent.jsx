@@ -33,7 +33,7 @@ class WelcomeComponent extends Component{
                 
                 {/*Test section*/}
                 <div className="container">   
-                    Test welcome message <Link onClick={() => this.getWelcomeMessage()}>TEST</Link>. 
+                    Test welcome message <Link to="" onClick={() => this.getWelcomeMessage()}>TEST</Link>. 
                 </div>
                 <div className="container">   
                     <h1>{this.state.servicemessage}</h1>
