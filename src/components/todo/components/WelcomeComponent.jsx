@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 
 import HelloWorldService from '../../../api/todo/HelloWorldService'
 
@@ -31,13 +31,16 @@ class WelcomeComponent extends Component{
 
 
                 
-                {/*Test section*/}
+                {/*Test section
+
                 <div className="container">   
                     Test welcome message <Link to="" onClick={() => this.getWelcomeMessage()}>TEST</Link>. 
                 </div>
                 <div className="container">   
                     <h1>{this.state.servicemessage}</h1>
                 </div>
+
+                */}
 
             </>
 
